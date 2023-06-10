@@ -30,8 +30,8 @@ public class CameraMovement : MonoBehaviour
     {
         if (player == null) return;
         //Movement
-        float playerSpeed = PlayerMovement.Instance.GetRb().velocity.magnitude;
-        Vector2 posOffset = PlayerMovement.Instance.GetRb().velocity / 1.75f;
+        float playerSpeed = PlayerMovements.Instance.GetRb().velocity.magnitude;
+        Vector2 posOffset = PlayerMovements.Instance.GetRb().velocity / 1.75f;
         Vector2 myPos = new Vector2(player.transform.position.x, player.transform.position.y) + posOffset;
 
         transform.position = Vector2.SmoothDamp(transform.position, myPos, ref velSpeed, speed);
@@ -59,4 +59,5 @@ public class CameraMovement : MonoBehaviour
     {
         roomT = pos;
     }
+
 }

@@ -6,8 +6,8 @@ public class Actor : MonoBehaviour
 {
     public float speed = 5;
     protected Rigidbody2D rb;
-    public GameObject killFx, bullet, coin;
-
+    public GameObject bullet;
+    public Transform firePoint;
 
     protected int dashCooldown;
 
@@ -16,6 +16,7 @@ public class Actor : MonoBehaviour
     protected float dashSpeed = 15f;
     protected int dashDuration = 35;
     protected int dashC;
+    public float nextFire = 0f;
 
     protected bool readyToFire = true;
 
@@ -56,7 +57,8 @@ public class Actor : MonoBehaviour
 
     protected void Fire()
     {
-
+        Instantiate(bullet, firePoint.position, firePoint.rotation);
     }
+
 
 }
