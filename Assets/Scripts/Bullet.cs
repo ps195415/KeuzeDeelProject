@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject bulletPartical;
+
+    public ParticleSystem bulletEffect;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Instantiate(bulletPartical, transform.position, transform.rotation);
-            Destroy(gameObject,2);
-            
-        } else
-        {
+            Debug.Log("hit enemy");
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(20);
             Destroy(gameObject);
         }
+        else
+        {
+            Debug.Log("hit other");
+            Destroy(gameObject);
+        }
+
+        Instantiate(bulletEffect,transform.position,transform.rotation);
     }
 
 }
