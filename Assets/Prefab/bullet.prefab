@@ -137,3 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletEffect: {fileID: 495159230601172862, guid: 39d2a320da09c334684dc4943931e9a5, type: 3}
+  _clip: {fileID: 8300000, guid: be82121528c1e754087b49297914189e, type: 3}

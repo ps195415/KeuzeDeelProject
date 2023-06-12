@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Transform player;
+    public Transform target;
 
     private float speed = 0.7f;
     private Vector2 velSpeed;
@@ -14,7 +14,6 @@ public class CameraMovement : MonoBehaviour
     private float velZoom;
 
     private Vector2 startPos;
-    private Transform roomT;
 
     public Camera _cam;
 
@@ -28,13 +27,13 @@ public class CameraMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player == null) return;
+        if (target == null) return;
         //Movement
         float playerSpeed = PlayerMovements.Instance.GetRb().velocity.magnitude;
         Vector2 posOffset = PlayerMovements.Instance.GetRb().velocity / 1.75f;
-        Vector2 myPos = new Vector2(player.transform.position.x, player.transform.position.y) + posOffset;
+        Vector2 targetPos = new Vector2(target.transform.position.x, target.transform.position.y) + posOffset;
 
-        transform.position = Vector2.SmoothDamp(transform.position, myPos, ref velSpeed, speed);
+        transform.position = Vector2.SmoothDamp(transform.position, targetPos, ref velSpeed, speed);
 
         if (playerSpeed > 11) playerSpeed = 11;
         //Zoom
@@ -42,22 +41,6 @@ public class CameraMovement : MonoBehaviour
         Camera.main.orthographicSize =
             Mathf.SmoothDamp(Camera.main.orthographicSize, desiredZoom, ref velZoom, zoomSpeed);
         transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-    }
-
-    public void SetPlayer(Transform t)
-    {
-        player = t;
-    }
-
-    public void StartRound()
-    {
-        _cam.orthographicSize = 0.1f;
-        transform.position = player.transform.position;
-    }
-
-    public void SetRoom(Transform pos)
-    {
-        roomT = pos;
     }
 
 }

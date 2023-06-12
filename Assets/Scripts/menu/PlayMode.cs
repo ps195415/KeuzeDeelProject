@@ -15,8 +15,4 @@ public class PlayMode : MonoBehaviour
         Application.Quit();
     }
 
-    public void Settings()
-    {
-        
-    }
 }

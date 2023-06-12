@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     public ParticleSystem bulletEffect;
+
+    void Awake()
+    {
+        FindObjectOfType<soundManager>().PlaySound("Fire");
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,7 +25,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Instantiate(bulletEffect,transform.position,transform.rotation);
+        Instantiate(bulletEffect, transform.position, transform.rotation);
     }
 
 }
